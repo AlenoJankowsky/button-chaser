@@ -1,4 +1,4 @@
-.container body{
+.container body {
     height: 100px;
     position: relative;
 }
@@ -8,6 +8,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
+}
+
+.button-class button {
     background-color: lightblue;
-    height: 5%;
 }
