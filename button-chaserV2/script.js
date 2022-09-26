@@ -8,16 +8,18 @@ function cursorIsNearButton(event) {
   let mouseXPosition = event.clientX;
   let mouseYPosition = event.clientY;
   let mouseIsNearButtonLowerLeft = mouseXPosition > (buttonCoordinates.left - 25) && mouseYPosition < (buttonLengthYCoordinates + 25) &&
-                                   !(mouseXPosition > buttonWidthXCoordinates) && !(mouseYPosition < buttonLengthYCoordinates);
+                                   !(mouseXPosition > buttonCoordinates.left) && !(mouseYPosition < buttonLengthYCoordinates);
                               
   let mouseIsNearButtonLowerRight = mouseXPosition < (buttonWidthXCoordinates + 25) && mouseYPosition < (buttonLengthYCoordinates + 25) &&
                                    !(mouseXPosition < buttonWidthXCoordinates) && !(mouseYPosition < buttonLengthYCoordinates);
                                    
   let mouseIsNearButtonUpperLeft = mouseXPosition > (buttonCoordinates.left - 25) && mouseYPosition > (buttonCoordinates.top - 25) &&
-                                   !(mouseXPosition > buttonWidthXCoordinates) && !(mouseYPosition > buttonLengthYCoordinates);
+                                   !(mouseXPosition > buttonCoordinates.left) && !(mouseYPosition > buttonYCoordinates);
                                    
   let mouseIsNearButtonUpperRight = mouseXPosition < (buttonWidthXCoordinates + 25) && mouseYPosition > (buttonCoordinates.top - 25) &&
-                                   !(mouseXPosition < buttonWidthXCoordinates) && !(mouseYPosition > buttonLengthYCoordinates);
+                                   !(mouseXPosition < buttonWidthXCoordinates) && !(mouseYPosition > buttonYCoordinates);
+
+  let mouseIsNearButtonLeft = mouseXPosition > (buttonCoordinates.left - 25) && !(mouseYPosition > buttonLengthYCoordinates) && !(mouseYPosition < buttonYCoordinates);
   
   let buttonTouchesMargin = buttonLengthYCoordinates >= containerCoordinates.height || buttonXCoordinates < containerCoordinates.left || buttonWidthXCoordinates > containerCoordinates.width ||
                             buttonYCoordinates < containerCoordinates.top;
@@ -72,6 +74,14 @@ function cursorIsNearButton(event) {
       let joinedStringForY = coordinateYNumberToString + "px";
       document.getElementById('button-div').style.left = joinedStringForX;
       document.getElementById('button-div').style.top = joinedStringForY;
+
+      return;
+  }
+  else if (mouseIsNearButtonLeft) {
+      let computedXCoordinates = buttonXCoordinates + 35;
+      let coordinateXNumberToString = computedXCoordinates.toString();
+      let joinedStringForX = coordinateXNumberToString + "px";
+      document.getElementById('button-div').style.left = joinedStringForX;
 
       return;
   }
