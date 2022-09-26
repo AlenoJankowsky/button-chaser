@@ -121,7 +121,7 @@ function cursorIsNearButton(event) {
     }
 }
 
-function youCanIndeedTouchedTheButtonOhMyGod() {
+function youCanIndeedTouchTheButtonOhMyGod() {
 document.getElementById('button-div').style.left = "50%";
 document.getElementById('button-div').style.top = "50%";
 
