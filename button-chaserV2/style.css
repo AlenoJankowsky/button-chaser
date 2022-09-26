@@ -1,0 +1,31 @@
+html,
+body {
+    margin: 0px;
+    height: 100%;
+}
+
+.container {
+    margin: 0px;
+    height: 100%;
+}
+
+.button-class {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 40px;
+    width: 80px;
+}
+
+.button-class button {
+    background-color: lightblue;
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    margin: 0px;
+}
+
+p {
+    position: relative;
+    top: 50px;
+}
