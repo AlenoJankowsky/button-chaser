@@ -7,22 +7,22 @@ function cursorIsNearButton(event) {
   let buttonWidthXCoordinates = buttonCoordinates.left + buttonCoordinates.width;
   let mouseXPosition = event.clientX;
   let mouseYPosition = event.clientY;
-  let mouseIsNearButtonLowerLeft = mouseXPosition > (buttonCoordinates.left - 25) && mouseYPosition < (buttonLengthYCoordinates + 25) &&
-                                   !(mouseXPosition > (buttonWidthXCoordinates - ((buttonWidthXCoordinates - buttonCoordinates.left) / 2))) &&
-                                   !(mouseYPosition < (buttonLengthYCoordinates - ((buttonLengthYCoordinates - buttonCoordinates.top) / 2)));
+  let mouseIsNearButtonLowerLeft = mouseXPosition > (buttonXCoordinates - 25) && mouseYPosition < (buttonLengthYCoordinates + 25) &&
+                                   !(mouseXPosition > (buttonWidthXCoordinates - ((buttonWidthXCoordinates - buttonXCoordinates) / 2))) &&
+                                   !(mouseYPosition < (buttonLengthYCoordinates - ((buttonLengthYCoordinates - buttonYCoordinates ) / 2)));
                                   
 
   let mouseIsNearButtonLowerRight = mouseXPosition < (buttonWidthXCoordinates + 25) && mouseYPosition < (buttonLengthYCoordinates + 25) &&
-                                   !(mouseXPosition < (buttonWidthXCoordinates - ((buttonWidthXCoordinates - buttonCoordinates.left) / 2))) &&
-                                   !(mouseYPosition < (buttonLengthYCoordinates - ((buttonLengthYCoordinates - buttonCoordinates.top) / 2)));
+                                   !(mouseXPosition < (buttonWidthXCoordinates - ((buttonWidthXCoordinates - buttonXCoordinates) / 2))) &&
+                                   !(mouseYPosition < (buttonLengthYCoordinates - ((buttonLengthYCoordinates - buttonYCoordinates ) / 2)));
   
-  let mouseIsNearButtonUpperLeft = mouseXPosition > (buttonCoordinates.left - 25) && mouseYPosition > (buttonCoordinates.top - 25) &&
-                                   !(mouseXPosition > (buttonWidthXCoordinates - ((buttonWidthXCoordinates - buttonCoordinates.left) / 2))) &&
-                                   !(mouseYPosition > (buttonLengthYCoordinates - ((buttonLengthYCoordinates - buttonCoordinates.top) / 2)));
+  let mouseIsNearButtonUpperLeft = mouseXPosition > (buttonXCoordinates - 25) && mouseYPosition > (buttonCoordinates.top - 25) &&
+                                   !(mouseXPosition > (buttonWidthXCoordinates - ((buttonWidthXCoordinates - buttonXCoordinates) / 2))) &&
+                                   !(mouseYPosition > (buttonLengthYCoordinates - ((buttonLengthYCoordinates - buttonYCoordinates ) / 2)));
 
-  let mouseIsNearButtonUpperRight = mouseXPosition < (buttonWidthXCoordinates + 25) && mouseYPosition > (buttonCoordinates.top - 25) &&
-                                   !(mouseXPosition < (buttonWidthXCoordinates - ((buttonWidthXCoordinates - buttonCoordinates.left) / 2))) &&
-                                   !((mouseYPosition > (buttonLengthYCoordinates - ((buttonLengthYCoordinates - buttonCoordinates.top) / 2))));
+  let mouseIsNearButtonUpperRight = mouseXPosition < (buttonWidthXCoordinates + 25) && mouseYPosition > (buttonYCoordinates  - 25) &&
+                                   !(mouseXPosition < (buttonWidthXCoordinates - ((buttonWidthXCoordinates - buttonXCoordinates) / 2))) &&
+                                   !((mouseYPosition > (buttonLengthYCoordinates - ((buttonLengthYCoordinates - buttonYCoordinates ) / 2))));
   
   let buttonTouchesMargin = buttonLengthYCoordinates >= containerCoordinates.height || buttonXCoordinates < containerCoordinates.left || buttonWidthXCoordinates > containerCoordinates.width ||
                             buttonYCoordinates < containerCoordinates.top;
