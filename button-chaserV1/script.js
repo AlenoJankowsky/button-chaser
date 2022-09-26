@@ -82,7 +82,7 @@ function cursorIsNearButton(event) {
   }
 }
 
-function youCanIndeedClickTheButtonOhMyGod() {
+function youCanIndeedTouchedTheButtonOhMyGod() {
   document.getElementById('button-div').style.left = "50%";
   document.getElementById('button-div').style.top = "50%";
 
