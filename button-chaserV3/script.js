@@ -25,11 +25,13 @@ function getMousePositionsInArray(event) {
   for (let iterationCounter = 0; iterationCounter <= 1; iterationCounter++) {
     let currentCoords = readMousePosition(event);
     referenceArray[iterationCounter] = currentCoords;
-    setTimeout(500);
+    setTimeout(1000);
   }
 
   return referenceArray;
 }
+
+document.getElementById("demo").innerHTML = referenceArray;
 
 function moveButton(event) {
   if (cursorIsNearButton(event)) {
