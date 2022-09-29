@@ -54,6 +54,9 @@ function moveButton(event) {
   }
 }
 
-function youCanIndeedTouchTheButtonOhMyGod (event) {
+function youCanIndeedTouchTheButtonOhMyGod() {
+  document.getElementById('button-div').style.left = "50%";
+  document.getElementById('button-div').style.top = "50%";
   
-}
+  return;
+  }
