@@ -9,7 +9,7 @@ body {
     height: 100%;
 }
 
-.body__container__button-class {
+.body__button-class {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -17,7 +17,7 @@ body {
     width: 80px;
 }
 
-.body__container__button-class__button {
+.button-class__button {
     background-color: lightblue;
     position: absolute;
     height: inherit;

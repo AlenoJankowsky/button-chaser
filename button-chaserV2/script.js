@@ -1,5 +1,5 @@
 function cursorIsNearButton(event) {
-    let buttonCoordinates = document.querySelector('.body__container__button-class').getBoundingClientRect();
+    let buttonCoordinates = document.querySelector('.body__button-class').getBoundingClientRect();
     let containerCoordinates = document.querySelector('.body__container').getBoundingClientRect();
     let buttonXCoordinates = buttonCoordinates.left;
     let buttonYCoordinates = buttonCoordinates.top;
@@ -88,7 +88,7 @@ function cursorIsNearButton(event) {
         return;
     }
     else if (mouseIsNearButtonLeft) {
-        let computedXCoordinates = buttonXCoordinates + 50;
+        let computedXCoordinates = buttonXCoordinates + 55;
         let coordinateXNumberToString = computedXCoordinates.toString();
         let joinedStringForX = coordinateXNumberToString + "px";
         document.getElementById('button-div').style.left = joinedStringForX;
@@ -96,7 +96,7 @@ function cursorIsNearButton(event) {
         return;
     }
     else if (mouseIsNearButtonRight) {
-        let computedXCoordinates = buttonXCoordinates - 50;
+        let computedXCoordinates = buttonXCoordinates - 55;
         let coordinateXNumberToString = computedXCoordinates.toString();
         let joinedStringForX = coordinateXNumberToString + "px";
         document.getElementById('button-div').style.left = joinedStringForX;
@@ -104,7 +104,7 @@ function cursorIsNearButton(event) {
         return;
     }
     else if (mouseIsNearButtonUpper) {
-        let computedYCoordinates = buttonYCoordinates + 50;
+        let computedYCoordinates = buttonYCoordinates + 55;
         let coordinateYNumberToString = computedYCoordinates.toString();
         let joinedStringForY = coordinateYNumberToString + "px";
         document.getElementById('button-div').style.top = joinedStringForY;
@@ -112,7 +112,7 @@ function cursorIsNearButton(event) {
         return;
     }
     else if (mouseIsNearButtonLower) {
-        let computedYCoordinates = buttonYCoordinates - 50;
+        let computedYCoordinates = buttonYCoordinates - 55;
         let coordinateYNumberToString = computedYCoordinates.toString();
         let joinedStringForY = coordinateYNumberToString + "px";
         document.getElementById('button-div').style.top = joinedStringForY;
