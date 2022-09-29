@@ -1,7 +1,3 @@
-function delay(time) {
-  return new Promise(resolve => setTimeout(resolve, time));
-}
-
 function cursorIsNearButton(event) {
   let buttonCoordinates = document.querySelector('.body__button-class').getBoundingClientRect();
   let buttonXCoordinates = buttonCoordinates.left;
@@ -16,37 +12,44 @@ function cursorIsNearButton(event) {
   return cursorIsNearButton;
 }
 
-function readMousePosition(event) {
-  let mouseXPosition = event.clientX;
-  let mouseYPosition = event.clientY;
-  let mouseCoordinates = [mouseXPosition, mouseYPosition];
-  document.getElementById("demo").innerHTML = mouseCoordinates;
-  
-  return mouseCoordinates;
-}
-
+let oldMouseCoordinatesX = null;
+let oldMouseCoordinatesY = null;
 function moveButton(event) {
-  let referenceArray = putMousePositionsInArray(event);
-  let buttonCoordinates = document.querySelector('.body__button-class').getBoundingClientRect();
-  let buttonXCoordinates = buttonCoordinates.left;
-  let buttonYCoordinates = buttonCoordinates.top;
-  let directionOfX = referenceArray[1][0] - referenceArray[0][0];
-  let directionOfY = referenceArray[1][1] - referenceArray[0][1];
-  document.getElementById("demo").innerHTML = directionOfX + " " + directionOfY;
-  if (cursorIsNearButton(event)) {
-    let computedXCoordinates = buttonXCoordinates + directionOfX;
-    let computedYCoordinates = buttonYCoordinates + directionOfY;
-    let coordinateXNumberToString = computedXCoordinates.toString();
-    let coordinateYNumberToString = computedYCoordinates.toString();
-    let joinedStringForX = coordinateXNumberToString + "px";
-    let joinedStringForY = coordinateYNumberToString + "px";
-    document.getElementById('button-div').style.left = joinedStringForX;
-    document.getElementById('button-div').style.top = joinedStringForY;
+  let bodyContainer = document.querySelector('.body__container').getBoundingClientRect();
+  let buttonContainer = document.getElementById('button-div');
+  let bodyLeftCoordinates = bodyContainer.left;
+  let bodyYCoordinates = bodyContainer.top;
+  let bodyWidthCoordinates = bodyContainer.width;
+  let bodyHeightCoordinates = bodyContainer.height;
+  let buttonXCoordinates = buttonContainer.offsetLeft;
+  let buttonYCoordinates = buttonContainer.offsetTop;
+  let buttonWidthXCoordinates = buttonContainer.offsetLeft + document.querySelector('.body__button-class').getBoundingClientRect().width;
+  let buttonLengthYCoordinates = buttonContainer.offsetTop + document.querySelector('.body__button-class').getBoundingClientRect().height;
+  let buttonTouchesMargin =  buttonLengthYCoordinates >= bodyHeightCoordinates || buttonXCoordinates <= bodyLeftCoordinates || buttonWidthXCoordinates >= bodyWidthCoordinates ||
+                             buttonYCoordinates <= bodyYCoordinates;
+                             
+  if (buttonTouchesMargin) {
+    document.getElementById('button-to-be-chased').style.position = "fixed";
 
     return;
   }
-  
-  return;
+  else if (oldMouseCoordinatesX != null && oldMouseCoordinatesY != null) { 
+    if (cursorIsNearButton(event)) {
+      let directionOfX = event.clientX - oldMouseCoordinatesX;
+      let directionOfY = event.clientY - oldMouseCoordinatesY;
+      let computedXCoordinates = buttonXCoordinates + directionOfX;
+      let computedYCoordinates = buttonYCoordinates + directionOfY;
+      let coordinateXNumberToString = computedXCoordinates.toString();
+      let coordinateYNumberToString = computedYCoordinates.toString();
+      let joinedStringForX = coordinateXNumberToString + "px";
+      let joinedStringForY = coordinateYNumberToString + "px";
+      buttonContainer.style.left = joinedStringForX;
+      buttonContainer.style.top = joinedStringForY;
+    }
+  }
+
+  oldMouseCoordinatesX = event.clientX;
+  oldMouseCoordinatesY = event.clientY;
 }
 
 function youCanIndeedTouchTheButtonOhMyGod() {
@@ -54,5 +57,5 @@ function youCanIndeedTouchTheButtonOhMyGod() {
   document.getElementById('button-div').style.top = "50%";
   
   return;
-  }
+}
   
