@@ -7,11 +7,12 @@
     <title>Button Chaser Volume 3</title>
   </head>
   <body>
-    <div id="canvas" onmousemove="cursorIsNearButton(event); putMousePositionsInArray(event)" class="body__container">
+    <div id="canvas" onmousemove="readMousePosition(event);" class="body__container">
       <div id="button-div"  class="body__button-class">
         <button class="button-class__button" id="button-to-be-chased" onmouseover="youCanIndeedTouchTheButtonOhMyGod()">Chase me >:3</button>
       </div>
       <p id="demo"></p>
+      <p id="demo2"></p>
     </div>
   </body>
 </html>

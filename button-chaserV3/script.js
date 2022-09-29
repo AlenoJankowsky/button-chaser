@@ -1,3 +1,7 @@
+function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
+
 function cursorIsNearButton(event) {
   let buttonCoordinates = document.querySelector('.body__button-class').getBoundingClientRect();
   let buttonXCoordinates = buttonCoordinates.left;
@@ -6,8 +10,8 @@ function cursorIsNearButton(event) {
   let buttonWidthXCoordinates = buttonCoordinates.left + buttonCoordinates.width;
   let mouseXPosition = event.clientX;
   let mouseYPosition = event.clientY;
-  let cursorIsNearButton = mouseXPosition > (buttonXCoordinates - 40) && mouseXPosition < (buttonWidthXCoordinates + 40) &&
-                           mouseYPosition > (buttonYCoordinates - 40) && mouseYPosition < (buttonLengthYCoordinates + 40);
+  let cursorIsNearButton = mouseXPosition > (buttonXCoordinates - 50) && mouseXPosition < (buttonWidthXCoordinates + 50) &&
+                           mouseYPosition > (buttonYCoordinates - 50) && mouseYPosition < (buttonLengthYCoordinates + 50);
 
   return cursorIsNearButton;
 }
@@ -16,28 +20,20 @@ function readMousePosition(event) {
   let mouseXPosition = event.clientX;
   let mouseYPosition = event.clientY;
   let mouseCoordinates = [mouseXPosition, mouseYPosition];
+  document.getElementById("demo").innerHTML = mouseCoordinates;
   
   return mouseCoordinates;
 }
 
-let referenceArray = [];
-function putMousePositionsInArray(event) {
-  for (let iterationCounter = 0; iterationCounter <= 1; iterationCounter++) {
-    let currentCoords = readMousePosition(event);
-    referenceArray[iterationCounter] = currentCoords;
-    setTimeout(1000);
-  }
-}
-
-document.getElementById("demo").innerHTML = "hello";
-
 function moveButton(event) {
+  let referenceArray = putMousePositionsInArray(event);
+  let buttonCoordinates = document.querySelector('.body__button-class').getBoundingClientRect();
+  let buttonXCoordinates = buttonCoordinates.left;
+  let buttonYCoordinates = buttonCoordinates.top;
+  let directionOfX = referenceArray[1][0] - referenceArray[0][0];
+  let directionOfY = referenceArray[1][1] - referenceArray[0][1];
+  document.getElementById("demo").innerHTML = directionOfX + " " + directionOfY;
   if (cursorIsNearButton(event)) {
-    let buttonCoordinates = document.querySelector('.body__button-class').getBoundingClientRect();
-    let buttonXCoordinates = buttonCoordinates.left;
-    let buttonYCoordinates = buttonCoordinates.top;
-    let directionOfX = referenceArray[1][0] - referenceArray[0][0];
-    let directionOfY = referenceArray[1][1]- referenceArray[0][1];
     let computedXCoordinates = buttonXCoordinates + directionOfX;
     let computedYCoordinates = buttonYCoordinates + directionOfY;
     let coordinateXNumberToString = computedXCoordinates.toString();
@@ -49,6 +45,8 @@ function moveButton(event) {
 
     return;
   }
+  
+  return;
 }
 
 function youCanIndeedTouchTheButtonOhMyGod() {
@@ -57,3 +55,4 @@ function youCanIndeedTouchTheButtonOhMyGod() {
   
   return;
   }
+  
