@@ -1,5 +1,5 @@
 function cursorIsNearButton(event) {
-  let buttonCoordinates = document.querySelector('.body__container__button-class').getBoundingClientRect();
+  let buttonCoordinates = document.querySelector('.body__button-class').getBoundingClientRect();
   let buttonXCoordinates = buttonCoordinates.left;
   let buttonYCoordinates = buttonCoordinates.top;
   let buttonLengthYCoordinates = buttonCoordinates.top + buttonCoordinates.height;
@@ -35,7 +35,7 @@ document.getElementById("demo").innerHTML = referenceArray;
 
 function moveButton(event) {
   if (cursorIsNearButton(event)) {
-    let buttonCoordinates = document.querySelector('.body__container__button-class').getBoundingClientRect();
+    let buttonCoordinates = document.querySelector('.body__button-class').getBoundingClientRect();
     let buttonXCoordinates = buttonCoordinates.left;
     let buttonYCoordinates = buttonCoordinates.top;
     let directionOfX = referenceArray[1][0] - referenceArray[0][0];
@@ -52,4 +52,8 @@ function moveButton(event) {
 
     return;
   }
+}
+
+function youCanIndeedTouchTheButtonOhMyGod (event) {
+  
 }
