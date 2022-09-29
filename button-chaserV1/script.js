@@ -1,5 +1,5 @@
 function cursorIsNearButton(event) {
-  let buttonCoordinates = document.querySelector('.body__container__button-class').getBoundingClientRect();
+  let buttonCoordinates = document.querySelector('.body__button-class').getBoundingClientRect();
   let containerCoordinates = document.querySelector('.body__container').getBoundingClientRect();
   let buttonXCoordinates = buttonCoordinates.left;
   let buttonYCoordinates = buttonCoordinates.top;
