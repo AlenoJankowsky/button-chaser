@@ -21,17 +21,15 @@ function readMousePosition(event) {
 }
 
 let referenceArray = [];
-function getMousePositionsInArray(event) {
+function putMousePositionsInArray(event) {
   for (let iterationCounter = 0; iterationCounter <= 1; iterationCounter++) {
     let currentCoords = readMousePosition(event);
     referenceArray[iterationCounter] = currentCoords;
     setTimeout(1000);
   }
-
-  return referenceArray;
 }
 
-document.getElementById("demo").innerHTML = referenceArray;
+document.getElementById("demo").innerHTML = "hello";
 
 function moveButton(event) {
   if (cursorIsNearButton(event)) {
@@ -40,7 +38,6 @@ function moveButton(event) {
     let buttonYCoordinates = buttonCoordinates.top;
     let directionOfX = referenceArray[1][0] - referenceArray[0][0];
     let directionOfY = referenceArray[1][1]- referenceArray[0][1];
-    document.getElementById("demo").innerHTML = referenceArray;
     let computedXCoordinates = buttonXCoordinates + directionOfX;
     let computedYCoordinates = buttonYCoordinates + directionOfY;
     let coordinateXNumberToString = computedXCoordinates.toString();
