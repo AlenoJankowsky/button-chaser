@@ -1,6 +1,6 @@
 function cursorIsNearButton(event) {
     let buttonCoordinates = document.getElementById('button-div');
-    let containerCoordinates = document.querySelector('canvas');
+    let containerCoordinates = document.getElementById('canvas');
     let buttonXCoordinates = buttonCoordinates.offsetLeft
     let buttonYCoordinates = buttonCoordinates.offsetTop;
     let buttonWidthXCoordinates = buttonXCoordinates + buttonCoordinates.offsetWidth;
@@ -35,8 +35,8 @@ function cursorIsNearButton(event) {
     let mouseIsNearButtonLower = mouseYPosition < (buttonLengthYCoordinates + 25) && !(mouseXPosition < buttonXCoordinates) && !(mouseXPosition > buttonWidthXCoordinates) &&
                                  !(mouseYPosition < buttonLengthYCoordinates);
 
-    let buttonTouchesMargin = buttonLengthYCoordinates >= bodyHeightCoordinates || buttonXCoordinates < bodyLeftCoordinates || buttonWidthXCoordinates > bodyWidthCoordinates ||
-                              buttonYCoordinates < bodyYCoordinates;
+    let buttonTouchesMargin = buttonLengthYCoordinates >= bodyHeightCoordinates || buttonXCoordinates <= bodyLeftCoordinates || buttonWidthXCoordinates >= bodyWidthCoordinates ||
+                              buttonYCoordinates <= bodyYCoordinates;
 
     if (buttonTouchesMargin) {
         document.getElementById('button-to-be-chased').style.position = "fixed";
@@ -92,7 +92,7 @@ function cursorIsNearButton(event) {
         return;
     }
     else if (mouseIsNearButtonLeft) {
-        let computedXCoordinates = buttonXCoordinates + 55;
+        let computedXCoordinates = buttonXCoordinates + 60;
         let coordinateXNumberToString = computedXCoordinates.toString();
         let joinedStringForX = coordinateXNumberToString + "px";
         document.getElementById('button-div').style.left = joinedStringForX;
@@ -100,7 +100,7 @@ function cursorIsNearButton(event) {
         return;
     }
     else if (mouseIsNearButtonRight) {
-        let computedXCoordinates = buttonXCoordinates - 55;
+        let computedXCoordinates = buttonXCoordinates - 60;
         let coordinateXNumberToString = computedXCoordinates.toString();
         let joinedStringForX = coordinateXNumberToString + "px";
         document.getElementById('button-div').style.left = joinedStringForX;
@@ -108,7 +108,7 @@ function cursorIsNearButton(event) {
         return;
     }
     else if (mouseIsNearButtonUpper) {
-        let computedYCoordinates = buttonYCoordinates + 55;
+        let computedYCoordinates = buttonYCoordinates + 60;
         let coordinateYNumberToString = computedYCoordinates.toString();
         let joinedStringForY = coordinateYNumberToString + "px";
         document.getElementById('button-div').style.top = joinedStringForY;
@@ -116,7 +116,7 @@ function cursorIsNearButton(event) {
         return;
     }
     else if (mouseIsNearButtonLower) {
-        let computedYCoordinates = buttonYCoordinates - 55;
+        let computedYCoordinates = buttonYCoordinates - 60;
         let coordinateYNumberToString = computedYCoordinates.toString();
         let joinedStringForY = coordinateYNumberToString + "px";
         document.getElementById('button-div').style.top = joinedStringForY;
