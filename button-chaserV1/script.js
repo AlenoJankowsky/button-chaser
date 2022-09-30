@@ -1,10 +1,14 @@
 function cursorIsNearButton(event) {
   let buttonCoordinates = document.getElementById('button-div');
-  let containerCoordinates = document.querySelector('.body__container').getBoundingClientRect();
+  let containerCoordinates = document.getElementById('canvas');
   let buttonXCoordinates = buttonCoordinates.offsetLeft;
   let buttonYCoordinates = buttonCoordinates.offsetTop;
   let buttonWidthXCoordinates = buttonXCoordinates + buttonCoordinates.offsetWidth;
   let buttonLengthYCoordinates = buttonYCoordinates + buttonCoordinates.offsetHeight;
+  let bodyLeftCoordinates = containerCoordinates.offsetLeft;
+  let bodyYCoordinates = containerCoordinates.offsetTop;
+  let bodyWidthCoordinates = containerCoordinates.offsetWidth;
+  let bodyHeightCoordinates = containerCoordinates.offsetHeight;
   let mouseXPosition = event.clientX;
   let mouseYPosition = event.clientY;
   let mouseIsNearButtonLowerLeft = mouseXPosition > (buttonXCoordinates - 25) && mouseYPosition < (buttonLengthYCoordinates + 25) &&
@@ -24,8 +28,8 @@ function cursorIsNearButton(event) {
                                    !(mouseXPosition < (buttonWidthXCoordinates - ((buttonWidthXCoordinates - buttonXCoordinates) / 2))) &&
                                    !((mouseYPosition > (buttonLengthYCoordinates - ((buttonLengthYCoordinates - buttonYCoordinates ) / 2))));
   
-  let buttonTouchesMargin = buttonLengthYCoordinates >= containerCoordinates.height || buttonXCoordinates < containerCoordinates.left || buttonWidthXCoordinates > containerCoordinates.width ||
-                            buttonYCoordinates < containerCoordinates.top;
+  let buttonTouchesMargin = buttonLengthYCoordinates >= bodyHeightCoordinates || buttonXCoordinates < bodyLeftCoordinates|| buttonWidthXCoordinates > bodyWidthCoordinates ||
+                            buttonYCoordinates < bodyYCoordinates;
 
   if (buttonTouchesMargin) {
       document.getElementById('button-to-be-chased').style.position = "fixed";
