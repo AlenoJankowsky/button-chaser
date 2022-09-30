@@ -1,10 +1,10 @@
 function cursorIsNearButton(event) {
-    let buttonCoordinates = document.querySelector('.body__button-class').getBoundingClientRect();
+    let buttonCoordinates = document.getElementById('button-div');
     let containerCoordinates = document.querySelector('.body__container').getBoundingClientRect();
-    let buttonXCoordinates = buttonCoordinates.left;
-    let buttonYCoordinates = buttonCoordinates.top;
-    let buttonLengthYCoordinates = buttonCoordinates.top + buttonCoordinates.height;
-    let buttonWidthXCoordinates = buttonCoordinates.left + buttonCoordinates.width;
+    let buttonXCoordinates = buttonCoordinates.offsetLeft
+    let buttonYCoordinates = buttonCoordinates.offsetTop;
+    let buttonWidthXCoordinates = buttonXCoordinates + buttonCoordinates.offsetWidth;
+    let buttonLengthYCoordinates = buttonYCoordinates + buttonCoordinates.offsetHeight;
     let mouseXPosition = event.clientX;
     let mouseYPosition = event.clientY;
     let mouseIsNearButtonLowerLeft = mouseXPosition > (buttonXCoordinates- 25) && mouseYPosition < (buttonLengthYCoordinates + 25) &&
