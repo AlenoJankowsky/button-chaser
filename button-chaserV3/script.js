@@ -17,14 +17,15 @@ let oldMouseCoordinatesY = null;
 function moveButton(event) {
   let bodyContainer = document.getElementById('canvas');
   let buttonContainer = document.getElementById('button-div');
+  let buttonXCoordinates = buttonContainer.offsetLeft;
+  let buttonYCoordinates = buttonContainer.offsetTop;
+  let buttonWidthXCoordinates = buttonXCoordinates + buttonContainer.offsetWidth;
+  let buttonLengthYCoordinates = buttonYCoordinates + buttonContainer.offsetHeight;
   let bodyLeftCoordinates = bodyContainer.offsetLeft;
   let bodyYCoordinates = bodyContainer.offsetTop;
   let bodyWidthCoordinates = bodyContainer.offsetWidth;
   let bodyHeightCoordinates = bodyContainer.offsetHeight;
-  let buttonXCoordinates = buttonContainer.offsetLeft;
-  let buttonYCoordinates = buttonContainer.offsetTop;
-  let buttonWidthXCoordinates = buttonContainer.offsetLeft + buttonContainer.offsetWidth;
-  let buttonLengthYCoordinates = buttonContainer.offsetTop + buttonContainer.offsetHeight;
+  
   let buttonTouchesMargin =  buttonLengthYCoordinates >= bodyHeightCoordinates || buttonXCoordinates <= bodyLeftCoordinates || buttonWidthXCoordinates >= bodyWidthCoordinates ||
                              buttonYCoordinates <= bodyYCoordinates;
                              
