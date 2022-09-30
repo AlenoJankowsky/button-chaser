@@ -1,9 +1,9 @@
 function cursorIsNearButton(event) {
-  let buttonCoordinates = document.querySelector('.body__button-class').getBoundingClientRect();
-  let buttonXCoordinates = buttonCoordinates.left;
-  let buttonYCoordinates = buttonCoordinates.top;
-  let buttonLengthYCoordinates = buttonCoordinates.top + buttonCoordinates.height;
-  let buttonWidthXCoordinates = buttonCoordinates.left + buttonCoordinates.width;
+  let buttonCoordinates = document.getElementById('button-div');
+  let buttonXCoordinates = buttonCoordinates.offsetLeft;
+  let buttonYCoordinates = buttonCoordinates.offsetTop;
+  let buttonWidthXCoordinates = buttonXCoordinates + buttonCoordinates.offsetWidth;
+  let buttonLengthYCoordinates = buttonYCoordinates + buttonCoordinates.offsetHeight;
   let mouseXPosition = event.clientX;
   let mouseYPosition = event.clientY;
   let cursorIsNearButton = mouseXPosition > (buttonXCoordinates - 50) && mouseXPosition < (buttonWidthXCoordinates + 50) &&
@@ -15,16 +15,16 @@ function cursorIsNearButton(event) {
 let oldMouseCoordinatesX = null;
 let oldMouseCoordinatesY = null;
 function moveButton(event) {
-  let bodyContainer = document.querySelector('.body__container').getBoundingClientRect();
+  let bodyContainer = document.getElementById('canvas');
   let buttonContainer = document.getElementById('button-div');
-  let bodyLeftCoordinates = bodyContainer.left;
-  let bodyYCoordinates = bodyContainer.top;
-  let bodyWidthCoordinates = bodyContainer.width;
-  let bodyHeightCoordinates = bodyContainer.height;
+  let bodyLeftCoordinates = bodyContainer.offsetLeft;
+  let bodyYCoordinates = bodyContainer.offsetTop;
+  let bodyWidthCoordinates = bodyContainer.offsetWidth;
+  let bodyHeightCoordinates = bodyContainer.offsetHeight;
   let buttonXCoordinates = buttonContainer.offsetLeft;
   let buttonYCoordinates = buttonContainer.offsetTop;
-  let buttonWidthXCoordinates = buttonContainer.offsetLeft + document.querySelector('.body__button-class').getBoundingClientRect().width;
-  let buttonLengthYCoordinates = buttonContainer.offsetTop + document.querySelector('.body__button-class').getBoundingClientRect().height;
+  let buttonWidthXCoordinates = buttonContainer.offsetLeft + buttonContainer.offsetWidth;
+  let buttonLengthYCoordinates = buttonContainer.offsetTop + buttonContainer.offsetHeight;
   let buttonTouchesMargin =  buttonLengthYCoordinates >= bodyHeightCoordinates || buttonXCoordinates <= bodyLeftCoordinates || buttonWidthXCoordinates >= bodyWidthCoordinates ||
                              buttonYCoordinates <= bodyYCoordinates;
                              
