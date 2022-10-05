@@ -1,9 +1,12 @@
 function cursorIsNearButton(event) {
   let buttonCoordinates = document.getElementById('button-div');
+
   let buttonXCoordinates = buttonCoordinates.offsetLeft;
   let buttonYCoordinates = buttonCoordinates.offsetTop;
+
   let buttonWidthXCoordinates = buttonXCoordinates + buttonCoordinates.offsetWidth;
   let buttonLengthYCoordinates = buttonYCoordinates + buttonCoordinates.offsetHeight;
+
   let mouseXPosition = event.clientX;
   let mouseYPosition = event.clientY;
   let cursorIsNearButton = mouseXPosition > (buttonXCoordinates - 50) && mouseXPosition < (buttonWidthXCoordinates + 50) &&
@@ -14,13 +17,18 @@ function cursorIsNearButton(event) {
 
 let oldMouseCoordinatesX = null;
 let oldMouseCoordinatesY = null;
+
 function moveButton(event) {
   let bodyContainer = document.getElementById('canvas');
+
   let buttonContainer = document.getElementById('button-div');
+
   let buttonXCoordinates = buttonContainer.offsetLeft;
   let buttonYCoordinates = buttonContainer.offsetTop;
+
   let buttonWidthXCoordinates = buttonXCoordinates + buttonContainer.offsetWidth;
   let buttonLengthYCoordinates = buttonYCoordinates + buttonContainer.offsetHeight;
+
   let bodyLeftCoordinates = bodyContainer.offsetLeft;
   let bodyYCoordinates = bodyContainer.offsetTop;
   let bodyWidthCoordinates = bodyContainer.offsetWidth;
@@ -38,12 +46,16 @@ function moveButton(event) {
     if (cursorIsNearButton(event)) {
       let directionOfX = event.clientX - oldMouseCoordinatesX;
       let directionOfY = event.clientY - oldMouseCoordinatesY;
+
       let computedXCoordinates = buttonXCoordinates + directionOfX;
       let computedYCoordinates = buttonYCoordinates + directionOfY;
+
       let coordinateXNumberToString = computedXCoordinates.toString();
       let coordinateYNumberToString = computedYCoordinates.toString();
+
       let joinedStringForX = coordinateXNumberToString + "px";
       let joinedStringForY = coordinateYNumberToString + "px";
+      
       buttonContainer.style.left = joinedStringForX;
       buttonContainer.style.top = joinedStringForY;
     }
