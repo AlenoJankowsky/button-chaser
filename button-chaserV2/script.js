@@ -148,7 +148,7 @@ function cursorIsNearButton(event) {
         let coordinateYNumberToString = computedYCoordinates.toString();
 
         let joinedStringForY = coordinateYNumberToString + "px";
-        
+
         document.getElementById('button-div').style.top = joinedStringForY;
 
         return;
@@ -156,8 +156,8 @@ function cursorIsNearButton(event) {
 }
 
 function youCanIndeedTouchTheButtonOhMyGod() {
-document.getElementById('button-div').style.left = "50%";
-document.getElementById('button-div').style.top = "50%";
+  document.getElementById('button-div').style.left = "50%";
+  document.getElementById('button-div').style.top = "50%";
 
-return;
+  return;
 }
