@@ -1,3 +1,7 @@
+var buttonDistanceChangeDiagonal = 35;
+var buttonDistanceChangeHorizontalAndVertical = 60;
+var cursorIsNearButtonTolerance = 25;
+
 function cursorIsNearButton(event) {
   const buttonCoordinates = document.getElementById('button-div');
 
@@ -17,42 +21,42 @@ function cursorIsNearButton(event) {
   const mouseXPosition = event.clientX;
   const mouseYPosition = event.clientY;
 
-  const mouseIsNearButtonLowerLeft = mouseXPosition > (buttonXCoordinates- 25) 
-                                     && mouseYPosition < (buttonLengthYCoordinates + 25) 
+  const mouseIsNearButtonLowerLeft = mouseXPosition > (buttonXCoordinates - cursorIsNearButtonTolerance) 
+                                     && mouseYPosition < (buttonLengthYCoordinates + cursorIsNearButtonTolerance) 
                                      && mouseXPosition < buttonXCoordinates 
                                      && mouseYPosition > buttonLengthYCoordinates;
                               
-  const mouseIsNearButtonLowerRight = mouseXPosition < (buttonWidthXCoordinates + 25) 
-                                      && mouseYPosition < (buttonLengthYCoordinates + 25) 
+  const mouseIsNearButtonLowerRight = mouseXPosition < (buttonWidthXCoordinates + cursorIsNearButtonTolerance) 
+                                      && mouseYPosition < (buttonLengthYCoordinates + cursorIsNearButtonTolerance) 
                                       && mouseXPosition > buttonWidthXCoordinates 
                                       && mouseYPosition > buttonLengthYCoordinates;
                                   
-  const mouseIsNearButtonUpperLeft = mouseXPosition > (buttonXCoordinates - 25) 
-                                     && mouseYPosition > (buttonYCoordinates - 25) 
+  const mouseIsNearButtonUpperLeft = mouseXPosition > (buttonXCoordinates - cursorIsNearButtonTolerance) 
+                                     && mouseYPosition > (buttonYCoordinates - cursorIsNearButtonTolerance) 
                                      && mouseXPosition < buttonXCoordinates 
                                      && mouseYPosition < buttonYCoordinates;
                                   
-  const mouseIsNearButtonUpperRight = mouseXPosition < (buttonWidthXCoordinates + 25) 
-                                      && mouseYPosition > (buttonYCoordinates - 25) 
+  const mouseIsNearButtonUpperRight = mouseXPosition < (buttonWidthXCoordinates + cursorIsNearButtonTolerance) 
+                                      && mouseYPosition > (buttonYCoordinates - cursorIsNearButtonTolerance) 
                                       && mouseXPosition > buttonWidthXCoordinates 
                                       && mouseYPosition < buttonYCoordinates;
 
-  const mouseIsNearButtonLeft = mouseXPosition > (buttonXCoordinates - 25) 
+  const mouseIsNearButtonLeft = mouseXPosition > (buttonXCoordinates - cursorIsNearButtonTolerance) 
                                 && mouseYPosition < buttonLengthYCoordinates 
                                 && mouseYPosition > buttonYCoordinates 
                                 && mouseXPosition < buttonWidthXCoordinates;
 
-  const mouseIsNearButtonRight = mouseXPosition < (buttonWidthXCoordinates +25) 
+  const mouseIsNearButtonRight = mouseXPosition < (buttonWidthXCoordinates + cursorIsNearButtonTolerance) 
                                  && mouseYPosition < buttonLengthYCoordinates
                                  && mouseYPosition > buttonYCoordinates
                                  && mouseXPosition > buttonXCoordinates;
   
-  const mouseIsNearButtonUpper = mouseYPosition > (buttonYCoordinates - 25) 
+  const mouseIsNearButtonUpper = mouseYPosition > (buttonYCoordinates - cursorIsNearButtonTolerance) 
                                  && mouseXPosition > buttonXCoordinates
                                  && mouseXPosition < buttonWidthXCoordinates
                                  && mouseYPosition < buttonYCoordinates;
 
-  const mouseIsNearButtonLower = mouseYPosition < (buttonLengthYCoordinates + 25) 
+  const mouseIsNearButtonLower = mouseYPosition < (buttonLengthYCoordinates + cursorIsNearButtonTolerance) 
                                  && mouseXPosition > buttonXCoordinates
                                  && mouseXPosition < buttonWidthXCoordinates
                                  && mouseYPosition > buttonLengthYCoordinates;
@@ -68,42 +72,42 @@ function cursorIsNearButton(event) {
     return;
   }
   else if (mouseIsNearButtonLowerLeft) {
-    const computedXCoordinates = buttonXCoordinates + 35;
-    const computedYCoordinates = buttonYCoordinates - 35;
+    const computedXCoordinates = buttonXCoordinates + buttonDistanceChangeDiagonal;
+    const computedYCoordinates = buttonYCoordinates - buttonDistanceChangeDiagonal;
     moveButton(computedXCoordinates, computedYCoordinates);
     
     return;
   } 
   else if (mouseIsNearButtonLowerRight) {
-    const computedXCoordinates = buttonXCoordinates - 35;
-    const computedYCoordinates = buttonYCoordinates - 35;
+    const computedXCoordinates = buttonXCoordinates - buttonDistanceChangeDiagonal;
+    const computedYCoordinates = buttonYCoordinates - buttonDistanceChangeDiagonal;
     moveButton(computedXCoordinates, computedYCoordinates);
 
     return;
   }
   else if (mouseIsNearButtonUpperLeft) {
-    const computedXCoordinates = buttonXCoordinates + 35;
-    const computedYCoordinates = buttonYCoordinates + 35;
+    const computedXCoordinates = buttonXCoordinates + buttonDistanceChangeDiagonal;
+    const computedYCoordinates = buttonYCoordinates + buttonDistanceChangeDiagonal;
     moveButton(computedXCoordinates, computedYCoordinates);
 
     return;
   }
   else if (mouseIsNearButtonUpperRight) {
-    const computedXCoordinates = buttonXCoordinates - 35;
-    const computedYCoordinates = buttonYCoordinates + 35;
+    const computedXCoordinates = buttonXCoordinates - buttonDistanceChangeDiagonal;
+    const computedYCoordinates = buttonYCoordinates + buttonDistanceChangeDiagonal;
     moveButton(computedXCoordinates, computedYCoordinates);
     
     return;
   }
   else if (mouseIsNearButtonLeft) {
-    const computedXCoordinates = buttonXCoordinates + 60;
+    const computedXCoordinates = buttonXCoordinates + buttonDistanceChangeHorizontalAndVertical;
     const computedYCoordinates = buttonYCoordinates;
     moveButton(computedXCoordinates, computedYCoordinates);
 
     return;
   }
   else if (mouseIsNearButtonRight) {
-    const computedXCoordinates = buttonXCoordinates - 60;
+    const computedXCoordinates = buttonXCoordinates - buttonDistanceChangeHorizontalAndVertical;
     const computedYCoordinates = buttonYCoordinates;
     moveButton(computedXCoordinates, computedYCoordinates);
 
@@ -111,14 +115,14 @@ function cursorIsNearButton(event) {
   }
   else if (mouseIsNearButtonUpper) {
     const computedXCoordinates = buttonXCoordinates;
-    const computedYCoordinates = buttonYCoordinates + 60;
+    const computedYCoordinates = buttonYCoordinates + buttonDistanceChangeHorizontalAndVertical;
     moveButton(computedXCoordinates, computedYCoordinates);
 
     return;
   }
   else if (mouseIsNearButtonLower) {
     const computedXCoordinates = buttonXCoordinates;
-    const computedYCoordinates = buttonYCoordinates - 60;
+    const computedYCoordinates = buttonYCoordinates - buttonDistanceChangeHorizontalAndVertical;
     moveButton(computedXCoordinates, computedYCoordinates);
 
     return;
