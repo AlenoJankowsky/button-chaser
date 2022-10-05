@@ -1,26 +1,26 @@
 html,
 body {
-    margin: 0px;
-    height: 100%;
+  margin: 0px;
+  height: 100%;
 }
 
 .body__container {
-    margin: 0px;
-    height: 100%;
+  margin: 0px;
+  height: 100%;
 }
 
 .body__button-class {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 40px;
-    width: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 40px;
+  width: 80px;
 }
 
 .button-class__button {
-    background-color: lightblue;
-    position: absolute;
-    height: inherit;
-    width: inherit;
-    margin: 0px;
+  background-color: lightblue;
+  position: absolute;
+  height: inherit;
+  width: inherit;
+  margin: 0px;
 }
