@@ -9,6 +9,7 @@ function cursorIsNearButton(event) {
 
   let mouseXPosition = event.clientX;
   let mouseYPosition = event.clientY;
+  
   let cursorIsNearButton = mouseXPosition > (buttonXCoordinates - 50) && mouseXPosition < (buttonWidthXCoordinates + 50) &&
                            mouseYPosition > (buttonYCoordinates - 50) && mouseYPosition < (buttonLengthYCoordinates + 50);
 
@@ -55,7 +56,7 @@ function moveButton(event) {
 
       let joinedStringForX = coordinateXNumberToString + "px";
       let joinedStringForY = coordinateYNumberToString + "px";
-      
+
       buttonContainer.style.left = joinedStringForX;
       buttonContainer.style.top = joinedStringForY;
     }
