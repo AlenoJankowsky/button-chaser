@@ -1,3 +1,5 @@
+var cursorIsNearButtonTolerance = 50;
+
 function cursorIsNearButton(event) {
   let buttonCoordinates = document.getElementById('button-div');
 
@@ -10,8 +12,10 @@ function cursorIsNearButton(event) {
   let mouseXPosition = event.clientX;
   let mouseYPosition = event.clientY;
 
-  let cursorIsNearButton = mouseXPosition > (buttonXCoordinates - 50) && mouseXPosition < (buttonWidthXCoordinates + 50) &&
-                           mouseYPosition > (buttonYCoordinates - 50) && mouseYPosition < (buttonLengthYCoordinates + 50);
+  let cursorIsNearButton = mouseXPosition > (buttonXCoordinates - cursorIsNearButtonTolerance) 
+                           && mouseXPosition < (buttonWidthXCoordinates + cursorIsNearButtonTolerance) 
+                           && mouseYPosition > (buttonYCoordinates - cursorIsNearButtonTolerance) 
+                           && mouseYPosition < (buttonLengthYCoordinates + cursorIsNearButtonTolerance);
 
   return cursorIsNearButton;
 }
@@ -35,8 +39,10 @@ function moveButton(event) {
   let bodyWidthCoordinates = bodyContainer.offsetWidth;
   let bodyHeightCoordinates = bodyContainer.offsetHeight;
   
-  let buttonTouchesMargin =  buttonLengthYCoordinates >= bodyHeightCoordinates || buttonXCoordinates <= bodyLeftCoordinates || buttonWidthXCoordinates >= bodyWidthCoordinates ||
-                             buttonYCoordinates <= bodyYCoordinates;
+  let buttonTouchesMargin = buttonLengthYCoordinates >= bodyHeightCoordinates 
+                            || buttonXCoordinates <= bodyLeftCoordinates 
+                            || buttonWidthXCoordinates >= bodyWidthCoordinates 
+                            || buttonYCoordinates <= bodyYCoordinates;
                              
   if (buttonTouchesMargin) {
     document.getElementById('button-to-be-chased').style.position = "fixed";
