@@ -17,24 +17,30 @@ function cursorIsNearButton(event) {
   const mouseXPosition = event.clientX;
   const mouseYPosition = event.clientY;
 
-  const mouseIsNearButtonLowerLeft = mouseXPosition > (buttonXCoordinates - 25) && mouseYPosition < (buttonLengthYCoordinates + 25) &&
-                                   !(mouseXPosition > (buttonWidthXCoordinates - ((buttonWidthXCoordinates - buttonXCoordinates) / 2))) &&
-                                   !(mouseYPosition < (buttonLengthYCoordinates - ((buttonLengthYCoordinates - buttonYCoordinates ) / 2)));
+  const mouseIsNearButtonLowerLeft = mouseXPosition > (buttonXCoordinates - 25) 
+                                     && mouseYPosition < (buttonLengthYCoordinates + 25) 
+                                     && mouseXPosition < (buttonWidthXCoordinates - ((buttonCoordinates.offsetWidth) / 2)) 
+                                     && mouseYPosition >(buttonLengthYCoordinates - ((buttonCoordinates.offsetHeight) / 2));
                                   
-  const mouseIsNearButtonLowerRight = mouseXPosition < (buttonWidthXCoordinates + 25) && mouseYPosition < (buttonLengthYCoordinates + 25) &&
-                                   !(mouseXPosition < (buttonWidthXCoordinates - ((buttonWidthXCoordinates - buttonXCoordinates) / 2))) &&
-                                   !(mouseYPosition < (buttonLengthYCoordinates - ((buttonLengthYCoordinates - buttonYCoordinates ) / 2)));
+  const mouseIsNearButtonLowerRight = mouseXPosition < (buttonWidthXCoordinates + 25) 
+                                     && mouseYPosition < (buttonLengthYCoordinates + 25) 
+                                     && mouseXPosition > (buttonWidthXCoordinates - ((buttonCoordinates.offsetWidth) / 2)) 
+                                     && mouseYPosition > (buttonLengthYCoordinates - ((buttonCoordinates.offsetHeight) / 2));
   
-  const mouseIsNearButtonUpperLeft = mouseXPosition > (buttonXCoordinates - 25) && mouseYPosition > (buttonYCoordinates - 25) &&
-                                   !(mouseXPosition > (buttonWidthXCoordinates - ((buttonWidthXCoordinates - buttonXCoordinates) / 2))) &&
-                                   !(mouseYPosition > (buttonLengthYCoordinates - ((buttonLengthYCoordinates - buttonYCoordinates ) / 2)));
+  const mouseIsNearButtonUpperLeft = mouseXPosition > (buttonXCoordinates - 25) 
+                                     && mouseYPosition > (buttonYCoordinates - 25) 
+                                     && mouseXPosition < (buttonWidthXCoordinates - ((buttonCoordinates.offsetWidth) / 2)) 
+                                     && mouseYPosition < (buttonLengthYCoordinates - ((buttonCoordinates.offsetHeight) / 2));
 
-  const mouseIsNearButtonUpperRight = mouseXPosition < (buttonWidthXCoordinates + 25) && mouseYPosition > (buttonYCoordinates  - 25) &&
-                                   !(mouseXPosition < (buttonWidthXCoordinates - ((buttonWidthXCoordinates - buttonXCoordinates) / 2))) &&
-                                   !((mouseYPosition > (buttonLengthYCoordinates - ((buttonLengthYCoordinates - buttonYCoordinates ) / 2))));
+  const mouseIsNearButtonUpperRight = mouseXPosition < (buttonWidthXCoordinates + 25) 
+                                     && mouseYPosition > (buttonYCoordinates  - 25) 
+                                     && mouseXPosition > (buttonWidthXCoordinates - ((buttonCoordinates.offsetWidth) / 2)) 
+                                     && mouseYPosition < (buttonLengthYCoordinates - ((buttonCoordinates.offsetHeight) / 2));
   
-  const buttonTouchesMargin = buttonLengthYCoordinates >= bodyHeightCoordinates || buttonXCoordinates < bodyLeftCoordinates|| buttonWidthXCoordinates > bodyWidthCoordinates ||
-                            buttonYCoordinates < bodyYCoordinates;
+  const buttonTouchesMargin = buttonLengthYCoordinates >= bodyHeightCoordinates 
+                              || buttonXCoordinates < bodyLeftCoordinates 
+                              || buttonWidthXCoordinates > bodyWidthCoordinates 
+                              || buttonYCoordinates < bodyYCoordinates;
 
   if (buttonTouchesMargin) {
       document.getElementById('button-to-be-chased').style.position = "fixed";
