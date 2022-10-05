@@ -138,7 +138,6 @@ function moveButton(computedXCoordinates, computedYCoordinates) {
 
   document.getElementById('button-div').style.left = joinedStringForX;
   document.getElementById('button-div').style.top = joinedStringForY;
-
 }
 
 function youCanIndeedTouchTheButtonOhMyGod() {
