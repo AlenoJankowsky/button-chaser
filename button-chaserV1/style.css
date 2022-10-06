@@ -9,7 +9,7 @@ body {
   height: 100%;
 }
 
-.body__button-class {
+.body__button-container {
   position: absolute;
   top: 50%;
   left: 50%;
