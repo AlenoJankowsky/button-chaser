@@ -35,21 +35,21 @@ function moveButton(event) {
   let buttonLengthYCoordinates = buttonYCoordinates + buttonContainer.offsetHeight;
 
   let bodyLeftCoordinates = bodyContainer.offsetLeft;
-  let bodyYCoordinates = bodyContainer.offsetTop;
+  let bodyTopCoordinates = bodyContainer.offsetTop;
   let bodyWidthCoordinates = bodyContainer.offsetWidth;
   let bodyHeightCoordinates = bodyContainer.offsetHeight;
   
   let buttonTouchesMargin = buttonLengthYCoordinates >= bodyHeightCoordinates 
                             || buttonXCoordinates <= bodyLeftCoordinates 
                             || buttonWidthXCoordinates >= bodyWidthCoordinates 
-                            || buttonYCoordinates <= bodyYCoordinates;
+                            || buttonYCoordinates <= bodyTopCoordinates;
                              
   if (buttonTouchesMargin) {
     document.getElementById('button-to-be-chased').style.position = "fixed";
 
     return;
   }
-  else if (oldMouseCoordinatesX != null && oldMouseCoordinatesY != null) { 
+  if (oldMouseCoordinatesX != null && oldMouseCoordinatesY != null) { 
     if (cursorIsNearButton(event)) {
       let directionOfX = event.clientX - oldMouseCoordinatesX;
       let directionOfY = event.clientY - oldMouseCoordinatesY;
